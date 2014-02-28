@@ -10,20 +10,18 @@ my_http.createServer(function(request,response){
       response.writeHead(202,{"Content-type":"text/html"});
       response.end(data);
     }
-   fs.readFile("index.html",function(error,data){
-       if(error){
-           response.writeHead(404,{"Content-type":"text/plain"});
-           response.end("Sorry the page was not found");
-       }else{
-           response.writeHead(202,{"Content-type":"text/html"});
-           response.end(data);
-       }
-   	});
 }).listen(8080);   
 sys.puts("Server Running on 8080");  
 
 var router = {
-  "/home": function (req, res) {
-    res.end("hey there");
-  }
+  "/": function (req, res) {
+  fs.readFile("index.html",function(error,data){
+    if(error){
+        response.writeHead(404,{"Content-type":"text/plain"});
+        response.end("Sorry the page was not found");
+    }else{
+        response.writeHead(202,{"Content-type":"text/html"});
+        response.end(data);
+    }
+  });
 }
