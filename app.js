@@ -14,8 +14,8 @@ my_http.createServer(function(request,response){
 sys.puts("Server Running on 8080");  
 
 var router = {
-  "/": function (req, res) {
-  fs.readFile("index.html",function(error,data){
+  "/": function (request, response) {
+  fs.readFile("views/index.html",function(error,data){
     if(error){
         response.writeHead(404,{"Content-type":"text/plain"});
         response.end("Sorry the page was not found");
